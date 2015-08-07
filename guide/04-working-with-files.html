@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>Submarine</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+</head>
+<body>
+  <div class="wrapper">
+
+      <section class="content">
+        <p><a href="index.html">table of contents</a></p>
+      <h1 id="write-some-non-tabular-data">Write some non-tabular data</h1>
+<p>So far we&#39;ve only worked with simple text-based data in the form of JSON objects, stored as rows inside dat. But what if you have a large non-tabular file that you want store in dat?</p>
+<p>To accommodate this, dat is capable of adding files to a dataset that is named, appropriately, &quot;files.&quot; These attachments are sometimes called &quot;blobs,&quot; which is short for &quot;Binary Large OBjectS.&quot; A blob can be any form of binary data, but for now just think of a blob as a file, like one you might put in Dropbox or attach to an email.</p>
+<h2 id="adding-blobs-to-dat">Adding blobs to dat</h2>
+<p>Let&#39;s store a file in dat. First, find an image online that you&#39;d like to import into dat. I recommend this great <a href="http://try-dat.com/static/img/wildcat.jpg">European wildcat</a>. Let&#39;s store it in dat:</p>
+<pre><code>dat write http://try-dat.com/static/img/wildcat.jpg -m &quot;Added a wildcat because I can.&quot;
+</code></pre><p>Notice the value of <code>version</code> has been updated, indicating that the dat changed with the storage of <code>wildcat.jpg</code>.</p>
+<p>Every time you write data to dat -- tabular or non tabular -- a new version snapshot is created of the entire dat.</p>
+<h2 id="reading-blobs">Reading blobs</h2>
+<p>Do an <code>ls</code>. You can see that the cat has now appeared on your filesystem. This is great for working with other programs. If you want to integrate dat programmatically, you can have dat read their binary contents back out using <code>read</code>.</p>
+<p>We need to pipe its output into a file to avoid displaying raw PNG data in the terminal (which just looks like nonsense):</p>
+<pre><code>$ dat read wildcat.jpg &gt; wildcat-is-out-of-dat.jpg
+</code></pre><p>You can double-click on <code>wildcat.jpg</code> to open it up and view it, if you like.</p>
+<p>For the sake of speed and efficiency, dat doesn&#39;t store blobs inside the datasets. Instead they&#39;re kept in a &quot;blob store&quot; -- a special directory -- with each having an indexed &quot;blob key.&quot;</p>
+
+        <div class="navlinks">
+          <a class="nextp button" href="05-dat-clone.html">OK, next! &raquo;</a>
+            <a class="lastp navlink" href="03-collaboration.html">&laquo; back</a>
+        </div>
+    </section>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+</body>
+</html>

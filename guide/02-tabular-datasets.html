@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+  <title>Submarine</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+</head>
+<body>
+  <div class="wrapper">
+
+      <section class="content">
+        <p><a href="index.html">table of contents</a></p>
+      <h1 id="write-some-tabular-data">Write some tabular data</h1>
+<p>Let&#39;s put some data into dat.</p>
+<p>There are three formats that dat can import: <a href="http://ndjson.org/" target="_blank">Newline-delimited JSON</a>, CSV and <a href="https://developers.google.com/protocol-buffers/" target="_blank">Protocol Buffers</a>. In this tutorial we will work with JSON and CSV.</p>
+<h2 id="newline-delimited-json">Newline-delimited JSON</h2>
+<p>Newline-delimited JSON is just a little bit different than regular JSON.</p>
+<p>Standard JSON looks like this:</p>
+<pre><code class="lang-JSON">[
+  {&quot;name&quot;: &quot;alice&quot;},
+  {&quot;name&quot;: &quot;bob&quot;}
+]
+</code></pre>
+<p>The two values are wrapped in array brackets (<code>[...]</code>) and separated by a comma (<code>,</code>). Newline-delimited JSON lacks those two features, instead representing the above data like this:</p>
+<pre><code>{&quot;name&quot;: &quot;alice&quot;}
+{&quot;name&quot;: &quot;bob&quot;}
+</code></pre><p>As you can see, it just means JSON objects separated by only a single line break. It&#39;s a very small change, but it&#39;s necessary to support parsing arbitrary subsets of a larger JSON file.</p>
+<p>Note that the following is <em>not</em> valid newline-delimited JSON:</p>
+<pre><code class="lang-JSON">{
+  &quot;name&quot;: &quot;alice&quot;
+}
+{
+  &quot;name&quot;: &quot;bob&quot;
+}
+</code></pre>
+<p>That&#39;s because it uses line breaks to format the JSON by pretty-printing it. In newline-delimited JSON the only time you will see a line break (aka a “newline”) is to separate two objects.</p>
+<h2 id="save-some-json-to-a-file">Save some JSON to a file</h2>
+<p>Create a new text file named <code>people.json</code>. The easiest way is to do that is to run <code>touch people.json</code>. This will create a new, empty file. <code>people.json</code> will show up in the file browser below, and you can double-click it to edit it.</p>
+<p>Copy the following newline-delimited JSON data, paste it into <code>people.json</code>, and save the file:</p>
+<pre><code>{&quot;name&quot;: &quot;alice&quot;, &quot;age&quot;: &quot;35&quot;}
+{&quot;name&quot;:&quot;bob&quot;, &quot;age&quot;: &quot;34&quot;}
+</code></pre><h2 id="import-the-json-into-dat">Import the JSON into dat</h2>
+<p>Import the data into dat, under a dataset called “people”.</p>
+<pre><code>dat import people.json -d people
+</code></pre><p>The data about Bob and Alice is now stored within dat! But don&#39;t delete that JSON file quite yet.</p>
+<h2 id="export-the-data">Export the data</h2>
+<p>Get the data back out of dat by running:</p>
+<pre><code>dat export -d people
+</code></pre><p>The output will look the same as what you put into dat.</p>
+<h2 id="updating-the-data">Updating the data</h2>
+<p>So, let&#39;s say Bob had a birthday. Happy birthday, Bob! Go into Bob&#39;s row and update his age to 35. After you do that and save your changes, run:</p>
+<pre><code>$ dat import people.json -d people
+Wrote [+2, -0].
+Done importing data.
+Version: c29d843864f8271d6f1238e150074043bef01bdfa9ab3fad3c939806a87ad2d1
+</code></pre><p>We imported the updated data into dat. So, we should see Bob is now 35, right?</p>
+<pre><code>$ dat export -d people
+</code></pre><p>Oh, no! We&#39;ve duplicated our data:</p>
+<pre><code>{&quot;name&quot;:&quot;alice&quot;,&quot;age&quot;:&quot;35&quot;}
+{&quot;name&quot;:&quot;bob&quot;,&quot;age&quot;:&quot;34&quot;}
+{&quot;name&quot;:&quot;alice&quot;,&quot;age&quot;:&quot;35&quot;}
+{&quot;name&quot;:&quot;bob&quot;,&quot;age&quot;:&quot;35&quot;}
+</code></pre><p>We imported the same data into our dat again, and because our data lacks a <strong>unique key</strong>, dat just assumes the data is new data and appends it to the end.</p>
+<h2 id="importing-json-with-keys">Importing JSON with keys</h2>
+<p>Let&#39;s wipe the slate and start over again. Run <code>dat destroy</code> to get rid of the data we imported above, and then run <code>dat init</code> to initialize a fresh dat store, again accepting the defaults for the three prompts.</p>
+<p>Now import the data again, but this time let&#39;s specify that the <code>name</code> field should be used as the key (we know this isn&#39;t probably a unique key, but let&#39;s entertain it for now).</p>
+<pre><code>$ dat import people.json -d people -k name
+</code></pre><p>Now, if we run the import a second time with a key, dat will attempt to update the rows.</p>
+<pre><code>$ dat import people.json --key=name -d people
+Wrote [+0, -0].
+No changes were made.
+</code></pre><p>Dat only writes new data if the data has changed. And because we&#39;re using a unique key, running <code>dat export -d people</code> shows no duplicates.</p>
+<p>If you update Alice&#39;s age to <code>36</code> and run <code>dat import</code> again, dat will update 1 row—Alice&#39;s.</p>
+<p><em>Note: If no key is found in the provided data, dat will generate it automatically. That automatic key can be found in the metadata by using <code>dat export -d people --full</code>. For some use cases, importing data without a key is perfectly fine behavior, but in other cases, you will want to make sure your incoming data has one. It all depends on the nature of the data that you are importing.</em></p>
+
+        <div class="navlinks">
+          <a class="nextp button" href="03-collaboration.html">OK, next! &raquo;</a>
+            <a class="lastp navlink" href="01-init.html">&laquo; back</a>
+        </div>
+    </section>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+</body>
+</html>

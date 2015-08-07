@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <title>Submarine</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+</head>
+<body>
+  <div class="wrapper">
+
+      <section class="content">
+        <p><a href="index.html">table of contents</a></p>
+      <h1 id="dat-clone">dat clone</h1>
+<p>You can use dat to distribute datasets to others. dat is transport-agnostic, so it is well-suited for typical transport protocols such as HTTP or SSH, which means any existing authentication setup is supported.</p>
+<p>For example, once you create your dat with <code>dat init</code>, if you put it on a web server, then others can run <code>dat clone ssh://example.com/path/to/dat</code> to download a full copy of the dat, including all rows, blobs (files), and version history.</p>
+<h2 id="cloning-a-dat">Cloning a dat</h2>
+<p>We host a dat dataset with some genome data in it at <a href="http://eukaryota.dathub.org/" target="_blank">eukaryota.dathub.org</a>. You can clone that dataset onto your local system by running:</p>
+<pre><code>dat clone http://eukaryota.dathub.org eukaryota
+</code></pre><p>This will clone the dataset into a folder called <code>eukaryota</code>. You can change the folder name by changing the last argument of the <code>clone</code> command above.</p>
+<p>In the terminal, run <code>cd eukaryota</code> to interact with the newly-cloned dat.</p>
+<p>Try running <code>dat status</code> to see how many datasets, keys, and files are in the dat.</p>
+<p>Then, try <code>dat export -d organisms --limit=1</code> to print out the first row from the dataset. You will see something like this:</p>
+<pre><code class="lang-json">{&quot;uid&quot;:&quot;10&quot;,&quot;organism_name&quot;:&quot;Oryza sativa&quot;,&quot;organism_kingdom&quot;:&quot;Eukaryota&quot;,&quot;organism_group&quot;:&quot;&quot;,&quot;organism_subgroup&quot;:&quot;Land Plants&quot;,&quot;defline&quot;:&quot;Oryza sativa overview&quot;,&quot;projectid&quot;:9512,&quot;project_accession&quot;:&quot;PRJNA9512&quot;,&quot;status&quot;:&quot;Complete&quot;,&quot;number_of_chromosomes&quot;:&quot;12&quot;,&quot;number_of_plasmids&quot;:&quot;1&quot;,&quot;number_of_organelles&quot;:&quot;2&quot;,&quot;assembly_name&quot;:&quot;Build 4.0&quot;,&quot;assembly_accession&quot;:&quot;GCA_000005425.2&quot;,&quot;assemblyid&quot;:313038,&quot;create_date&quot;:&quot;2002/04/04 00:00&quot;,&quot;options&quot;:&quot;&quot;,&quot;weight&quot;:385,&quot;chromosome_assemblies&quot;:&quot;5&quot;,&quot;scaffold_assemblies&quot;:&quot;1&quot;,&quot;sra_genomes&quot;:&quot;0&quot;,&quot;taxid&quot;:4530}
+</code></pre>
+<h2 id="cloning-a-clone">Cloning a clone</h2>
+<p>So you&#39;ve cloned a dataset and re-hosted it on a public server. You don&#39;t own the original dataset (<code>eukaryota.dathub.org</code>) but you <em>do</em> own your clone. This means you can edit your copy and re-distribute your edited versions for others to clone.</p>
+<p>Now, let&#39;s try cloning your copy of the eukaryota data from this browser environment.
+You&#39;ll need to install dat on your local machine so that you can clone your dataset onto your computer.</p>
+<h4 id="installing-dat-is-a-2-step-process-">Installing dat is a 2-step process:</h4>
+<ul>
+<li>First, <a href="http://nodejs.org" target="_blank">download the node.js installer for your OS</a> and walk through the installer. This will install the <code>node</code> and <code>npm</code> commands onto your computer.</li>
+<li>Second, open your terminal program (&quot;Terminal&quot; on Mac, &quot;Command Prompt&quot; on Windows) and install dat by running <code>npm install dat -g</code>. This make take a few minutes.</li>
+</ul>
+<p>When the installation finishes, you should be able to run the <code>dat</code> command in your terminal and see output like this:</p>
+<pre><code>$ dat
+ usage: dat &lt;command(s)&gt; [-flag] [--key=value]
+
+ commands:
+   init      initialize a new dat in a directory
+   checkout  dat will operate at a particular fork
+   add       import a file into dat
+   push      push data to a remote dat
+</code></pre><p><strong>If you run into permissions or <code>EACCESS</code> error, run the install command again with sudo: <code>sudo npm install dat -g</code></strong></p>
+<h2 id="sharing-a-dat">Sharing a dat</h2>
+<p>First, run <code>dat serve --port=80</code>. This makes the dat available at <a href="http://MY-SERVER-ADDRESS">http://MY-SERVER-ADDRESS</a>. Your own server address will be available in <code>welcome.txt</code> -- find it by typing <code>cat welcome.txt</code>.</p>
+<p>Then, run the following command on your laptop to get the data:</p>
+<pre><code>dat clone http://MY-SERVER-ADDRESS eukaryota
+</code></pre><p>You can pass an additional argument, in this case, <code>eukaryota</code>, to clone the data into a custom folder name. Otherwise, it will use your server address as the folder name.</p>
+<p>If you <code>cd</code> into your new dat folder <code>eukaryota</code>, you should be able to do <code>dat status</code> to print out a summary of the data repository.</p>
+
+        <div class="navlinks">
+          <a class="nextp button" href="06-package-config.html">OK, next! &raquo;</a>
+            <a class="lastp navlink" href="04-working-with-files.html">&laquo; back</a>
+        </div>
+    </section>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+</body>
+</html>
