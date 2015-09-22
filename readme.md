@@ -1,11 +1,9 @@
-# try-dat
+# try-npm-guide
 
-## A command line tutorial to learn `dat`
+## A command line tutorial to learn `npm`
 
-This repo contains the content for the workshop.
-
-First install dat on your command line: `npm install dat -g`
+This repo contains the content for the workshop. `npm` and `node` come pre-installed.  Open the page and run!
 
 Then follow the instructions from each markdown (`.md`) file in this repo, in order.
 
-More lessons coming soon! Leave feedback in the issue tracker.
+The legwork for the infrastructure of this app is heavily credited to @mafintosh && @maxogden!  See [adventure-time](https://github.com/maxogden/adventure-time/) to see how to build your own :).

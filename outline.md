@@ -9,7 +9,7 @@
 - pull
 - gasket
 - docker
-
+ 
 
 - manual bionode ncbi search genome eukaryota --limit=5
 - manual !! | dat import --json
@@ -19,9 +19,9 @@
 - copy paste map-guillardia-sequences pipeline into gasket.json
 - gasket ls
 - gasket run map-guillardia-sequences
-- 
+-
 
 - todo
 - preinstall gasket, bionode in container
 - host eukaryota data on dathub.org
-- 
+-
