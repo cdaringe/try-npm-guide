@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>Submarine</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+  <link rel="stylesheet" href="../static/css/npm.css" />
+</head>
+<body>
+  <div class="wrapper">
+
+      <section class="content">
+        <p><a href="index.html">table of contents</a></p>
+      <h1 id="global-packages">global packages</h1>
+<p>npm let&#39;s you install packages globally on your system.  Let&#39;s check one out.</p>
+<p>Run <code>sudo npm install -g shrugy</code>.</p>
+<p>Note, your system <em>may</em> not require sudo. <a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">it depends</a> on your own preference, or company&#39;s preference.</p>
+<p>Ok, now that <code>shrugy</code> is installed, let&#39;s start shrugging.</p>
+<pre><code class="lang-bash">$ shrugy     //=&gt; ¯\_(ツ)_/¯
+$ shrugy npm //=&gt; ¯\_(npm)_/¯
+$ node index.js $(shrugy npm) //=&gt; ¯\_(npm)_/¯ ... but more colorful :)
+</code></pre>
+<p>So, using <code>npm</code>, we were able to install a program that gets added to our system PATH that we can call from the CLI!  How cool!</p>
+<p>Suppose hypothetically that you wanted to <em>unistall</em> <code>shrugy</code>.  That would be crazy, because it&#39;s clearly amazing, but, you&#39;d simply run:</p>
+<p><code>npm uninstall -g shrugy</code></p>
+<p>Ba-da-bing.  You&#39;re a global package guru.</p>
+
+        <div class="navlinks">
+          <a class="nextp button" href="06-package-config.html">OK, next! &raquo;</a>
+            <a class="lastp navlink" href="05-node_modules.html">&laquo; back</a>
+        </div>
+    </section>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+</body>
+</html>

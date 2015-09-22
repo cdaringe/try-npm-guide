@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>Submarine</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+  <link rel="stylesheet" href="../static/css/npm.css" />
+</head>
+<body>
+  <div class="wrapper">
+
+      <section class="content">
+        <p><a href="index.html">table of contents</a></p>
+      <h1 id="use-packages">use packages</h1>
+<p>Let&#39;s create a file to use our package, <code>index.js</code>.  Create input the following code into the file:</p>
+<pre><code class="lang-js">var colors = require(&#39;colors&#39;);
+console.log(&#39;npm is GREAT&#39;.rainbow);
+</code></pre>
+<p>Now, run <code>node index.js</code>.  Whoa! You saw <span style='font-weight:bold;'><span style='color:#FF0000;'>n</span><span style='color:#FF7F00;'>p</span><span style='color:#FFFF00;'>m</span> <span style='color:#00FF00;'>i</span><span style='color:#00FF7F;'>s</span> <span style='color:#007FFF;'>G</span><span style='color:#0000FF;'>R</span><span style='color:#7F00FF;'>E</span><span style='color:#FF00FE;'>A</span><span style='color:#FF007F;'>T</span></span>, right? Beautiful!  But you know what we really want?  Let&#39;s allow our user to add arguments to the program and make those inputs colorful too.  That is, let&#39;s call <code>node index.js i love rainbows</code> and get the text <span style='font-weight:bold;'><span style='color:#FF0000;'>i</span> <span style='color:#FFCC00;'>l</span><span style='color:#CBFF00;'>o</span><span style='color:#65FF00;'>v</span><span style='color:#00FF00;'>e</span> <span style='color:#00FFCC;'>r</span><span style='color:#00CBFF;'>a</span><span style='color:#0065FF;'>i</span><span style='color:#0000FF;'>n</span><span style='color:#6500FF;'>b</span><span style='color:#CC00FF;'>o</span><span style='color:#FF00CB;'>w</span><span style='color:#FF0065;'>s</span></span> back.  Try the following code then run <code>node index.js i love rainbows</code>.  Don&#39;t worry if you don&#39;t understand the code.</p>
+<pre><code class="lang-js">var colors = require(&#39;colors&#39;);
+var args = process.argv.slice(2);
+var colorArgs = args.map(function(arg) {
+    return arg.rainbow;
+});
+console.log(colorArgs.join(&#39; &#39;));
+</code></pre>
+<p>Cool.  Now you can clearly see how npm and node work together.</p>
+
+        <div class="navlinks">
+          <a class="nextp button" href="04-removing-and-updating-packages.html">OK, next! &raquo;</a>
+            <a class="lastp navlink" href="02-installing-removing-packages.html">&laquo; back</a>
+        </div>
+    </section>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+</body>
+</html>

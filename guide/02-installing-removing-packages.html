@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>Submarine</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+  <link rel="stylesheet" href="../static/css/npm.css" />
+</head>
+<body>
+  <div class="wrapper">
+
+      <section class="content">
+        <p><a href="index.html">table of contents</a></p>
+      <h1 id="installing-packages">installing packages</h1>
+<p>npm hosts <em>drillions</em>, even <em>ba-gillions</em>, of useful packages.  Let&#39;s jump on <a href="http://www.npmjs.com">npmjs.com</a> and search for <em>colors</em>.</p>
+<p>When I searched for <em>colors</em>, I immediately found the <a href="https://www.npmjs.com/package/colors">colors</a> package.  It looks like this will help us a great deal.</p>
+<p>To install it, run the command <code>npm install --save colors</code>.  This installs your package <em>to the current project</em>.  More accurately, it install <code>colors</code> to the current folder if it has a package.json, or up your folder tree to the nearest folder that contains a package.json.</p>
+<p>Two things to notice:</p>
+<ol>
+<li>Run a <code>ls</code> to see the current directory.  Do you see the <code>node_modules</code> folder?  This is where project packages are installed.</li>
+<li>Open up your package.json file.  Do you see <code>dependencies</code> section?  Here, you will see <code>colors@some-version</code>.  npm supports <a href="https://docs.npmjs.com/files/package.json#version">semver versioning</a>.  Don&#39;t worry if you&#39;re not familiar with it now.  It will be easy to pick up with practice.</li>
+</ol>
+<p>There are <em>more</em> ways to install packages, such as simply editing your package.json with package names and versions, then running <code>npm install</code>, or <code>npm i</code> for short.  We won&#39;t touch all of those now.  Let&#39;s keep moving.</p>
+
+        <div class="navlinks">
+          <a class="nextp button" href="03-using-packages.html">OK, next! &raquo;</a>
+            <a class="lastp navlink" href="01-init.html">&laquo; back</a>
+        </div>
+    </section>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+</body>
+</html>

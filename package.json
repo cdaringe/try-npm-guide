@@ -1,18 +1,19 @@
 {
-  "name": "get-dat",
+  "name": "try-npm-guide",
   "version": "1.0.0",
-  "description": "workshop content for learning dat",
+  "description": "workshop content for learning npm",
   "main": "index.js",
   "scripts": {
     "render": "submarine markdown guide --template=guide.html",
     "deploy": "gh-pages-deploy",
     "build": "browserify index.js -o bundle.js && browserify terminal.js -o terminal-bundle.js",
-    "start": "beefy index.js:bundle.js terminal.js:terminal-bundle.js"
+    "start": "beefy index.js:bundle.js terminal.js:terminal-bundle.js",
+    "watch": "npm-watch"
   },
-  "author": "max ogden",
+  "author": "cdaringe",
   "license": "BSD",
   "watch": {
-    "build": "workshop/*.md"
+    "render": "-e md markdown"
   },
   "gh-pages-deploy": {
     "prep": [
@@ -23,10 +24,10 @@
   },
   "dependencies": {
     "adventure-time": "^1.0.0",
-    "gh-pages-deploy": "^0.1.1",
-    "submarine": "0.2.4"
+    "gh-pages-deploy": "^0.1.1"
   },
   "devDependencies": {
+    "submarine": "0.2.4",
     "beefy": "^2.1.1",
     "browserify": "^6.1.0",
     "npm-watch": "0.0.0"

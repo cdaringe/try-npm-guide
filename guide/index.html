@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>{{> header }}</title>
+  <title>Submarine</title>
   <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -10,7 +10,6 @@
 </head>
 <body>
   <div class="wrapper">
-      {{#if index}}
         <div id="wombat-container">
             <img width="50%" src="../static/img/wombat.png" />
         </div>
@@ -20,31 +19,27 @@
         <h4>Table of Contents</h4>
         <div class="jumbotron-horizontal-rule"></div>
         <ul class="toc-list">
-          {{#index}}
-            <li><a href="{{ href }}">{{ name }}</a></li>
-          {{/index}}
+            <li><a href="01-init.html">01-init</a></li>
+            <li><a href="02-installing-removing-packages.html">02-installing-removing-packages</a></li>
+            <li><a href="03-using-packages.html">03-using-packages</a></li>
+            <li><a href="04-removing-and-updating-packages.html">04-removing-and-updating-packages</a></li>
+            <li><a href="04-working-with-files.html">04-working-with-files</a></li>
+            <li><a href="05-dat-clone.html">05-dat-clone</a></li>
+            <li><a href="05-node_modules.html">05-node_modules</a></li>
+            <li><a href="06-global-packages.html">06-global-packages</a></li>
+            <li><a href="06-package-config.html">06-package-config</a></li>
+            <li><a href="07-publishing-packages.html">07-publishing-packages</a></li>
+            <li><a href="07-thanks.html">07-thanks</a></li>
+            <li><a href="08-package.json.html">08-package.json</a></li>
+            <li><a href="09-closing-remarks.html">09-closing-remarks</a></li>
         </ul>
         <p>If you look to your right, you'll see there is a terminal that is connected to a <strong>docker container</strong> -- that is a computer, in the cloud but accessible right here in your browser!</p>
         <p>Below the terminal, there's a filebrowser and an editor. These are connected to the same machine. Every time you type in the editor, try-npm automatically saves the file. Groovy.</p>
       <p><strong>When you leave or close this webpage your server will be shut down.</strong></p>
-      <p>Ok, ready to dive in? <a class="nextp button" href="{{index.0.href}}">Let's go! &raquo;</a>
+      <p>Ok, ready to dive in? <a class="nextp button" href="01-init.html">Let's go! &raquo;</a>
       </p>
       </section>
-      {{/if}}
 
-      {{#if content}}
-      <section class="content">
-        <p><a href="index.html">table of contents</a></p>
-      {{{ content }}}
-        <div class="navlinks">
-        {{#if next}}
-          <a class="nextp button" href="{{ next }}.html">OK, next! &raquo;</a>
-          {{#if previous}}
-            <a class="lastp navlink" href="{{ previous }}.html">&laquo; back</a>
-          {{/if}}
-        {{/if}}
-        </div>
-      {{/if}}
     </section>
   </div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>

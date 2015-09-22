@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>Submarine</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+  <link rel="stylesheet" href="../static/css/npm.css" />
+</head>
+<body>
+  <div class="wrapper">
+
+      <section class="content">
+        <p><a href="index.html">table of contents</a></p>
+      <h2 id="removing-and-updating-packages">removing and updating packages</h2>
+<p>What if you want to uninstall the colors package?</p>
+<ol>
+<li>run <code>npm remove colors</code>.  you should see a confirmation that the package was remove or unbuilt.</li>
+<li>check your package.json.  colors is still listed in the dependencies section.  didn&#39;t we just remove it?  sure did, but to persist changes to our package.json, remember that we need to couple install/remove commands with a <code>--save</code> option.</li>
+<li>run <code>npm remove colors --save</code> and the entry will be removed.</li>
+</ol>
+<p>Running our app will now break.  When node tries to find <code>colors</code>, nothing will be present.  So, let&#39;s reinstall our package.  However, let&#39;s pretend that the latest version of <code>colors</code> doesn&#39;t work with your application.  In many cases, you may want an <em>older</em> version of the package.  By looking at the colors <a href="https://github.com/Marak/colors.js/releases">github releases</a>, we can see that there is a version 1.1.1, and we know that it will work with our app.</p>
+<ol>
+<li>run <code>npm i --save colors@1.1.1</code></li>
+</ol>
+<p>Boom!  Done!  We can <code>require(&#39;colors&#39;)</code> and rest assured that version 1.1.1 will be used in our program.</p>
+<p>Note: not all packages use github, nor do packages that do use github necessarily use the releases feature.  many large, popular projects do however, which makes it a handy tool to inspect package history or versions.</p>
+<p>Before we move on, let&#39;s talk about updating <code>colors</code> when we think the module has stablized.  To see if we are outdated, run <code>npm outdated</code>.  It shows that we are at <code>1.1.1</code>.  The &quot;wanted&quot; field indicated the latest version permitted to install as defined by our package.json&#39;s versioning rules.  Looks like we are OK to install the &quot;latest&quot;.  If the &quot;latest&quot; begins with a &quot;1.&quot;, then we are good to update!</p>
+<p><code>npm update</code> will update <code>colors</code> to the most-up-to-date version we can.  Try it!</p>
+
+        <div class="navlinks">
+          <a class="nextp button" href="04-working-with-files.html">OK, next! &raquo;</a>
+            <a class="lastp navlink" href="03-using-packages.html">&laquo; back</a>
+        </div>
+    </section>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <title>Submarine</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">
+  <link rel="stylesheet" href="../static/css/npm.css" />
+</head>
+<body>
+  <div class="wrapper">
+
+      <section class="content">
+        <p><a href="index.html">table of contents</a></p>
+      <h1 id="package-json">package.json</h1>
+<p>We could spend hours on tools that are centered around <code>package.json</code>.  It&#39;s just a tiny little file, but there are many useful utilties built around it.</p>
+<p>Let&#39;s talk about some of the most common you&#39;re bound to see in the wild.</p>
+<h2 id="devdependencies">devDependencies</h2>
+<p>Remember how we installed packages to our <code>package.json</code> using <code>--save</code>?  Consider when your pacakge may require tooling to support development or quality?  For example, a <em>testing utility</em> would be useful.  Let&#39;s install <code>tape</code>, a popular &quot;Test Anything Protocol&quot; utility.</p>
+<ul>
+<li>run <code>npm i --save-dev tape</code></li>
+</ul>
+<p><code>tape</code> is now installed into your <code>node_modules/</code>, just like normal.  However, there is a key difference.  Inspect your <code>package.json</code> for <code>devDependencies</code>.  Here, <code>tape</code> is listed.  <strong>The significance</strong> is that when your package is used as a dependent package of another package, the <code>devDependencies</code> will <em>not</em> be installed.  This shrinks the size of your package, sometimes significantly, for consumers of it.  This results in faster download times, faster install times, and a clear list of dependencies that your program <em>really</em> needs in order to run.</p>
+<h2 id="scripts">scripts</h2>
+<p><code>npm</code> has many handy built in scripts.  Let&#39;s generate some.</p>
+<p>Edit your pacakge.json to include a <code>&quot;start&quot;</code> entry and a &quot;demo&quot; entry:</p>
+<pre><code class="lang-json">...
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node index.js just-demoing&quot;,
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;demo&quot;: &quot;npm start&quot;
+  },
+...
+</code></pre>
+<p>Great.  Run <code>npm start</code>.  Check it out!  It ran your script. <a href="https://docs.npmjs.com/misc/scripts">npm scripts</a> provide a task-runner like interface.  You can get really wild with some of these, and even add configuration variables, which is super handy and fun.</p>
+<p>What about the &quot;test&quot; script?</p>
+<p>Run <code>npm test</code>.  No surprises here.  What if we added a real test though?</p>
+<pre><code class="lang-js">// test.js
+var test = require(&#39;tape&#39;);
+var mypackage = require(&#39;./index.js&#39;); // or just require(&#39;./&#39;)
+test(&#39;test rainbow-ness&#39;, function (t) {
+    t.ok(true, &#39;insert real test, will ya?&#39;);
+    t.end();
+});
+</code></pre>
+<p>Then updated <code>&quot;test&quot;</code> from <code>&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</code> to &quot;node test.js&quot;.</p>
+<p>Run <code>npm test</code> again!  This is a real process that exits when things fail with bad exit codes, so if you wanted to build a big program with a build step, yet cancel the build if the tests failed, this becomes very easy to do!</p>
+<p>Finally, let&#39;s look at the &quot;demo&quot; script.  What happens if you run <code>npm demo</code>?  Uh oh, it errors out!  Some scripts, like <code>start</code> and <code>test</code> are reserved.  No worries.  For most custom scripts you make, simply add a <code>run</code> in the middle.</p>
+<p>Run <code>npm run demo</code>.  Well look at that!  Demo <em>ran</em> your <em>start</em> script!  Pretty fancy stuff!</p>
+
+        <div class="navlinks">
+          <a class="nextp button" href="09-closing-remarks.html">OK, next! &raquo;</a>
+            <a class="lastp navlink" href="07-thanks.html">&laquo; back</a>
+        </div>
+    </section>
+  </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+</body>
+</html>
