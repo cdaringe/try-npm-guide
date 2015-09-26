@@ -1,6 +1,6 @@
 # use packages
 
-Let's create a file to use our package, `index.js`.  Paste or type the following code into the file:
+Let's create a file to use consume the packages we've downloaded.  Create a new file, `index.js`.  Paste or type the following code into the file:
 
 ```js
 var colors = require('colors');

@@ -14,15 +14,23 @@
       <section class="content">
         <p><a href="index.html">table of contents</a></p>
       <h1 id="installing-packages">installing packages</h1>
-<p>npm hosts <em>drillions</em>, even <em>ba-gillions</em>, of useful packages.  Let&#39;s jump on <a href="http://www.npmjs.com">npmjs.com</a> and search for <em>colors</em>.</p>
-<p>When I searched for <em>colors</em>, I immediately found the <a href="https://www.npmjs.com/package/colors">colors</a> package.  It looks like this will help us a great deal.</p>
-<p>To install it, run the command <code>npm install --save colors</code>.  This installs your package <em>to the current project</em>.  More accurately, it install <code>colors</code> to the current folder if it has a package.json, or up your folder tree to the nearest folder that contains a package.json.</p>
+<p>npm hosts <em>drillions</em>, even <em>ba-gillions</em>, of useful packages.  Let&#39;s jump on <a href="http://www.npmjs.com">npmjs.com</a> and search for a package called &quot;colors.&quot;&quot;</p>
+<p>When I searched for colors, I immediately found the <a href="https://www.npmjs.com/package/colors">colors</a> package.  By peering over the documentation, it seems like this package can help us a great deal as we write our program.</p>
+<p>To install it, run the command <code>npm install --save colors</code>.  This installs the colors package <em>to the current project</em>.  More accurately, it installs <code>colors</code> to the current project if it has a package.json, or, npm will traverse up your folder tree to the nearest folder that contains a package.json and install it there.</p>
 <p>Two things to notice:</p>
 <ol>
 <li>Run a <code>ls</code> to see the current directory.  Do you see the <code>node_modules</code> folder?  This is where project packages are installed.</li>
 <li>Open up your package.json file.  Do you see <code>dependencies</code> section?  Here, you will see <code>colors@some-version</code>.  npm supports <a href="https://docs.npmjs.com/files/package.json#version">semver versioning</a>.  Don&#39;t worry if you&#39;re not familiar with it now.  It will be easy to pick up with practice.</li>
 </ol>
-<p>There are <em>more</em> ways to install packages, such as simply editing your package.json with package names and versions, then running <code>npm install</code>, or <code>npm i</code> for short.  We won&#39;t touch all of those now.  Let&#39;s keep moving.</p>
+<p><br>
+There are <em>more</em> ways to install packages.  Let&#39;s learn one more.  Shall we add <code>lodash.map</code> to our package?  I think we shall!  Go ahead and add it to your <code>package.json</code> as shown below:</p>
+<pre><code class="lang-json">&quot;dependencies&quot;: {
+  &quot;colors&quot;: &quot;^1.1.2&quot;,
+  &quot;lodash.map&quot;: &quot;latest&quot;
+}
+</code></pre>
+<p><br>
+Now, run <code>npm i</code> (shorthand for <code>npm install</code>).  Look at that!  You&#39;ve now installed two packages in two different ways!</p>
 
         <div class="navlinks">
           <a class="nextp button" href="03-using-packages.html">OK, next! &raquo;</a>
