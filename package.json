@@ -23,14 +23,14 @@
     "noprompt": "true"
   },
   "dependencies": {
-    "adventure-time": "^1.0.0",
-    "gh-pages-deploy": "^0.1.1"
+    "adventure-time": "^2.0.0",
+    "gh-pages-deploy": "^0.4.2"
   },
   "devDependencies": {
     "submarine": "0.2.4",
     "beefy": "^2.1.1",
-    "browserify": "^6.1.0",
-    "npm-watch": "0.0.0"
+    "browserify": "^15.0.0",
+    "npm-watch": "0.3.0"
   },
   "dat": {}
 }
